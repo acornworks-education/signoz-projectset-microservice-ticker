@@ -1,6 +1,6 @@
 from flask import Flask, request
 import json
-from . import processor
+import processor
 
 app = Flask(__name__)
 
@@ -15,4 +15,3 @@ def add_ticker():
 @app.route('/ticker', methods=['DELETE'])
 def remove_ticker():
     return processor.remove_ticker(request.get_json())
-

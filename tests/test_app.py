@@ -15,7 +15,7 @@ class TestProcessor(unittest.TestCase):
             {'ticker': 'AUDEUR=X', 'name': 'FX AUD/EUR'}
         ]
 
-        with mock.patch('src.ticker.processor.get_tickers') as get_tickers_mock:
+        with mock.patch('processor.get_tickers') as get_tickers_mock:
             get_tickers_mock.return_value = expected_result
 
             ticker_list_request = self.client.get('/ticker/list')
@@ -32,8 +32,8 @@ class TestProcessor(unittest.TestCase):
     def test_ticker_root_endpoint(self):
         call_body = {'ticker': 'AUDKRW=X', 'name': 'FX AUD/KRW'}
 
-        with mock.patch('src.ticker.processor.add_ticker') as add_ticker_mock:
-            with mock.patch('src.ticker.processor.remove_ticker') as remove_ticker_mock:
+        with mock.patch('processor.add_ticker') as add_ticker_mock:
+            with mock.patch('processor.remove_ticker') as remove_ticker_mock:
                 self.client.get('/ticker', data=json.dumps(call_body))
                 self.assertEqual(0, add_ticker_mock.call_count)
                 self.assertEqual(0, remove_ticker_mock.call_count)
