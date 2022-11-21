@@ -19,3 +19,8 @@ services:
     build:
       context: .
       dockerfile: db/Dockerfile
+
+networks:
+  default:
+    name: projectset
+    external: true
