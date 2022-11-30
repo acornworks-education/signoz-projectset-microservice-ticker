@@ -7,9 +7,9 @@ services:
     ports:
     - "65010:8080"
     environment:
-      TICKER_HOST: database
+      TICKER_HOST: ticker-database
       TICKER_PORT: 5432      
-  database:
+  ticker-database:
     image: postgres:14.5
     environment:
       POSTGRES_PASSWORD: P@ssw0rd
