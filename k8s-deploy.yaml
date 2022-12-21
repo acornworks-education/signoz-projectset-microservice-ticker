@@ -38,7 +38,6 @@ spec:
           name: ticker-db-config
 status: {}
 ---
-# kubectl -n acornworks expose deployment/ticker-database --port 5432 --target-port 5432 --dry-run -o yaml
 apiVersion: v1
 kind: Service
 metadata:
