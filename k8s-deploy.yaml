@@ -55,19 +55,15 @@ spec:
 status:
   loadBalancer: {}
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   labels:
     app: ticker-flyway
   name: ticker-flyway
   namespace: acornworks
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: ticker-flyway
-  strategy: {}
+  backoffLimit: 3
   template:
     metadata:
       labels:
@@ -106,6 +102,7 @@ spec:
       - name: flyway-scripts
         configMap:
           name: ticker-db-flyway
+      restartPolicy: Never
 status: {}
 ---
 apiVersion: apps/v1
