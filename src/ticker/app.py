@@ -1,7 +1,9 @@
 from flask import Flask, request, Response
 import json
 import processor
+from logger import init
 
+init()
 app = Flask(__name__)
 
 @app.route('/ticker/list')
