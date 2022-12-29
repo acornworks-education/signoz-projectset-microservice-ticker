@@ -4,6 +4,7 @@ services:
   ticker:
     build:
       context: .
+    image: k830206/signoz-ticker:latest
     ports:
     - "65010:8080"
     environment:
